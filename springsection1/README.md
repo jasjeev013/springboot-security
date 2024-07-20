@@ -9,4 +9,5 @@
 [//]: # (----------------- Section 2 -----------------------)
 
 1. Created All Dummy Controllers
-2. 
+2. Creating Custom Security FilterChain with RequestMatchers,permitAll,denyAll,authenticated
+3. Learnt About FormLogin and HttpBasic Login
