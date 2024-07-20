@@ -37,12 +37,12 @@ public class ProjectSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(){
         UserDetails user1 =  User.withUsername("jasjeev")
-                .password("{bcrypt}$2a$10$9Okk7uC52Rwq99G8Vq0mlec7xOZkze8QJr8iqunf1MSHFkFbLzkCG") //jasjeev123
+                .password("{bcrypt}$2a$10$3H.kZak5TxiNPmOf3wtwaO2.wb0Z8/QEf1Lg6HUAcfnBRO1Ylbbfa") //jasjeev123
                 .authorities("read")
                 .build();
 
         UserDetails user2 =  User.withUsername("rohan")
-                .password("{noop}Rohan@123")
+                .password("{noop}Rohan@549")
                 .authorities("admin")
                 .build();
 
@@ -54,6 +54,7 @@ public class ProjectSecurityConfig {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder(); // Taking Default Or Spring Recommended Password Encoder
     }
 
+    @Bean
     public CompromisedPasswordChecker compromisedPasswordChecker(){
         return new HaveIBeenPwnedRestApiPasswordChecker();
     }
