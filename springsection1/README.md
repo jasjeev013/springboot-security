@@ -15,7 +15,7 @@
 [//]: # (-------------------- Section 3 ---------------------)
 
 1. Understood InMemoryDatabase, used to store credentials directly in UserDetailsService
-2. Learnt About Password Encoders
+2. Learnt About Password Encoders - Used Bcrypt password encoder
 3. Learnt Compromised Password Checker Which Checks for that is the password Strong or Not
 4. Understood whole UserDetails which is Under AuthenticationProvider
 5. Different in Authentication Interface and UserDetails Interface
