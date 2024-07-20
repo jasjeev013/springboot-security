@@ -11,3 +11,13 @@
 1. Created All Dummy Controllers
 2. Creating Custom Security FilterChain with RequestMatchers,permitAll,denyAll,authenticated
 3. Learnt About FormLogin and HttpBasic Login
+
+[//]: # (-------------------- Section 3 ---------------------)
+
+1. Understood InMemoryDatabase, used to store credentials directly in UserDetailsService
+2. Learnt About Password Encoders
+3. Learnt Compromised Password Checker Which Checks for that is the password Strong or Not
+4. Understood whole UserDetails which is Under AuthenticationProvider
+5. Different in Authentication Interface and UserDetails Interface
+
+[//]: # (--------------------- Section 4 ---------------------)
