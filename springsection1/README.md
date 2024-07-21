@@ -21,3 +21,7 @@
 5. Different in Authentication Interface and UserDetails Interface
 
 [//]: # (--------------------- Section 4 ---------------------)
+
+1. Setup a MYSQL container for eazybank database on docker using command "docker run -p 3306:3306 --name springsecurity -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=eazybank -d mysql"
+2. Using SQL Electron for the connection to DB and checking the records and tables
+3. Made tables and their using the commands in scripts.sql, tables were taken from users.dll 
