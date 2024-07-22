@@ -25,3 +25,9 @@
 1. Setup a MYSQL container for eazybank database on docker using command "docker run -p 3306:3306 --name springsecurity -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=eazybank -d mysql"
 2. Using SQL Electron for the connection to DB and checking the records and tables
 3. Made tables and their using the commands in scripts.sql, tables were taken from users.dll 
+4. Changed InMemoryUserDetailsMangers to JDBCUserDetailsManager and now using it for authentication,which has specific user and role table implementation
+5. For Implementing Authentication using our own tables we create CustomUserDetailsService by implementing UserDetailsService & Removing JDBCUserDetailsManager
+6. created a Register Router which registers the customer & Disables CSRF as it does not allow Creating deleting Data in table
+
+[//]: # (----------------------- Section 5 -----------------------)
+

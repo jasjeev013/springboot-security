@@ -5,14 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class ProjectSecurityConfig {
@@ -23,8 +23,9 @@ public class ProjectSecurityConfig {
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().permitAll());
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().denyAll());
 
-        http.authorizeHttpRequests(requests ->  requests.requestMatchers("/myAccount","/myBalance","/myCards").authenticated()
-                .requestMatchers("/notices","/contact","/error").permitAll());
+        http.csrf(csrfConfig -> csrfConfig.disable())
+                .authorizeHttpRequests(requests ->  requests.requestMatchers("/myAccount","/myBalance","/myCards").authenticated()
+                .requestMatchers("/notices","/contact","/error","/register").permitAll());
 
 //        http.formLogin(flc -> flc.disable()); // The form will appear
 //        http.httpBasic(hbc -> hbc.disable()); // The alert box will appear
@@ -34,20 +35,10 @@ public class ProjectSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService(){
-        UserDetails user1 =  User.withUsername("jasjeev")
-                .password("{bcrypt}$2a$10$3H.kZak5TxiNPmOf3wtwaO2.wb0Z8/QEf1Lg6HUAcfnBRO1Ylbbfa") //jasjeev123
-                .authorities("read")
-                .build();
-
-        UserDetails user2 =  User.withUsername("rohan")
-                .password("{noop}Rohan@549")
-                .authorities("admin")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1,user2);
-    }
+    /*@Bean
+    public UserDetailsService userDetailsService(DataSource dataSource){
+        return new JdbcUserDetailsManager(dataSource);
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder(){
