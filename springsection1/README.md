@@ -31,3 +31,12 @@
 
 [//]: # (----------------------- Section 5 -----------------------)
 
+1. Understanding Password Encoding using Encoding, Encryption & Hashing
+2. Demo,Drawbacks & Advantages of these three
+3. Brute Force , Rainbow & Dictionary Attack
+4. Overcoming the above attacks by various methods
+5. Understanding PasswordEncoder.class & BCryptPasswordEncoder
+
+[//]: # (------------------- Section 6 ----------------)
+
+1. 
