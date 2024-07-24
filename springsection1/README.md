@@ -39,4 +39,6 @@
 
 [//]: # (------------------- Section 6 ----------------)
 
-1. 
+1. Understanding Authentication Provider & how AuthenticationManager chooses AuthenticationProvider
+2. Created own Custom Authentication Provider which works on UsernamePasswordAuthenticationToken
+3. Understanding Business Standards for Environments and Profiles in Detail
