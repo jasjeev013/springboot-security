@@ -42,3 +42,9 @@
 1. Understanding Authentication Provider & how AuthenticationManager chooses AuthenticationProvider
 2. Created own Custom Authentication Provider which works on UsernamePasswordAuthenticationToken
 3. Understanding Business Standards for Environments and Profiles in Detail
+
+[//]: # (-------------------- Section 7 -------------------------)
+
+1. Accepting only HTTP or HTTPS request on the basis of prod or default profile
+2. Understanding Exception Handling for Access Denied and Forbidden Error
+3. Created Custom AuthenticationEntryPoint (Not necessary)

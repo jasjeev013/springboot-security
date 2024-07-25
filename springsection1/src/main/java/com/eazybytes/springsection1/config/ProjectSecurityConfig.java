@@ -1,5 +1,6 @@
 package com.eazybytes.springsection1.config;
 
+import com.eazybytes.springsection1.exceptionhandling.CustomBasicAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
@@ -23,6 +24,9 @@ public class ProjectSecurityConfig {
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().permitAll());
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().denyAll());
 
+//        http.requiresChannel(rcc -> rcc.anyRequest().requiresSecure()); // Allows only HTTPS
+//        http.requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()); // Al lows only HTTP
+
         http.csrf(csrfConfig -> csrfConfig.disable())
                 .authorizeHttpRequests(requests ->  requests.requestMatchers("/myAccount","/myBalance","/myCards").authenticated()
                 .requestMatchers("/notices","/contact","/error","/register").permitAll());
@@ -31,7 +35,7 @@ public class ProjectSecurityConfig {
 //        http.httpBasic(hbc -> hbc.disable()); // The alert box will appear
 
         http.formLogin(Customizer.withDefaults());
-        http.httpBasic(Customizer.withDefaults());
+        http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
         return http.build();
     }
 
