@@ -1,5 +1,6 @@
 package com.eazybytes.springsection1.config;
 
+import com.eazybytes.springsection1.exceptionhandling.CustomAccessDeniedHandler;
 import com.eazybytes.springsection1.exceptionhandling.CustomBasicAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,18 +25,21 @@ public class ProjectSecurityConfig {
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().permitAll());
 //        http.authorizeHttpRequests(requests ->  requests.anyRequest().denyAll());
 
+        http.sessionManagement(smc -> smc.invalidSessionUrl("/invalidSession").maximumSessions(1).maxSessionsPreventsLogin(true));
+
 //        http.requiresChannel(rcc -> rcc.anyRequest().requiresSecure()); // Allows only HTTPS
 //        http.requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()); // Al lows only HTTP
 
         http.csrf(csrfConfig -> csrfConfig.disable())
                 .authorizeHttpRequests(requests ->  requests.requestMatchers("/myAccount","/myBalance","/myCards").authenticated()
-                .requestMatchers("/notices","/contact","/error","/register").permitAll());
+                .requestMatchers("/notices","/contact","/error","/register","/invalidSession").permitAll());
 
 //        http.formLogin(flc -> flc.disable()); // The form will appear
 //        http.httpBasic(hbc -> hbc.disable()); // The alert box will appear
 
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
+        http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()));
         return http.build();
     }
 

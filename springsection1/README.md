@@ -48,3 +48,7 @@
 1. Accepting only HTTP or HTTPS request on the basis of prod or default profile
 2. Understanding Exception Handling for Access Denied and Forbidden Error
 3. Created Custom AuthenticationEntryPoint (Not necessary)
+4. Setting Custom AccessDeniedHandler (Not necessary) 
+5. Setting Custom Set Timeout & Timeout Message for logged In User 
+6. Setting Custom Concurrent Sessions Controls
+7. Understanding Session Fixations, Session Hacking Attacks
