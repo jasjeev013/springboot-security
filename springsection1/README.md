@@ -52,3 +52,6 @@
 5. Setting Custom Set Timeout & Timeout Message for logged In User 
 6. Setting Custom Concurrent Sessions Controls
 7. Understanding Session Fixations, Session Hacking Attacks
+8. Adding Authentication EventListeners
+9. Creating Custom FormLogin & Logout Configurations with thymeleaf
+10. 
