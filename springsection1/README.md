@@ -54,4 +54,10 @@
 7. Understanding Session Fixations, Session Hacking Attacks
 8. Adding Authentication EventListeners
 9. Creating Custom FormLogin & Logout Configurations with thymeleaf
-10. 
+10. Understanding SecurityContext & SecurityContextHolder
+
+[//]: # (------------------- Section 8 -------------------------)
+
+1. Establishing Frontend & Adding Implementation to Models & Routes with Database Queries
+2. Understood & Implemented CORS Policy
+3. Added CSRF Policy
