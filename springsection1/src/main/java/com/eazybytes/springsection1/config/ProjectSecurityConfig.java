@@ -63,7 +63,12 @@ public class ProjectSecurityConfig {
 //        http.requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()); // Al lows only HTTP
 
         http
-                .authorizeHttpRequests(requests ->  requests.requestMatchers("/myAccount","/myBalance","/myCards","/user").authenticated()
+                .authorizeHttpRequests(requests ->  requests
+                        .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
+                        .requestMatchers("/myBalance").hasAnyAuthority("VIEWBALANCE","VIEWACCOUNT")
+                        .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
+                        .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
+                        .requestMatchers("/user").authenticated()
                 .requestMatchers("/notices","/contact","/error","/register","/invalidSession").permitAll());
 
 //        http.formLogin(flc -> flc.disable()); // The form will appear

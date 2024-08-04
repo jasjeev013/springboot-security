@@ -61,3 +61,10 @@
 1. Establishing Frontend & Adding Implementation to Models & Routes with Database Queries
 2. Understood & Implemented CORS Policy
 3. Added CSRF Policy
+
+[//]: # (------------------ Section 9 --------------------)
+
+1. Difference between Authentication & Authorization
+2. Implementing Authorization in SecurityConfig
+3. Difference between Authority & Roles
+4. Implementing Authorization Events
