@@ -68,3 +68,10 @@
 2. Implementing Authorization in SecurityConfig
 3. Difference between Authority & Roles
 4. Implementing Authorization Events
+
+[//]: # (-------------------- Section 10 -----------------------)
+
+1. Understanding Custom Filters & OncePerFilterRequest
+2. Adding AddFilterAfter,AddFilterBedore & AddFilterAt methods in project
+
+[//]: # (----------------- Section 11 ----------------------------)
