@@ -3,13 +3,18 @@ package com.eazybytes.springsection1.config;
 import com.eazybytes.springsection1.exceptionhandling.CustomAccessDeniedHandler;
 import com.eazybytes.springsection1.exceptionhandling.CustomBasicAuthenticationEntryPoint;
 import com.eazybytes.springsection1.filter.CSRFCookieFilter;
+import com.eazybytes.springsection1.filter.JWTTokenGenerationFilter;
+import com.eazybytes.springsection1.filter.JWTTokenValidatorFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.password.CompromisedPasswordChecker;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -23,6 +28,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 
 import javax.sql.DataSource;
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -34,8 +40,8 @@ public class ProjectSecurityConfig {
         CsrfTokenRequestAttributeHandler csrfTokenRequestAttributeHandler = new CsrfTokenRequestAttributeHandler();
 
 
-        http.securityContext(contextCofig -> contextCofig.requireExplicitSave(false))
-                .sessionManagement(sessionCofig -> sessionCofig.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+        http
+                .sessionManagement(sessionCofig -> sessionCofig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .cors(corsConfig -> corsConfig.configurationSource(new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
@@ -44,13 +50,14 @@ public class ProjectSecurityConfig {
                 config.setAllowedMethods(Collections.singletonList("*"));
                 config.setAllowCredentials(true);
                 config.setAllowedHeaders(Collections.singletonList("*"));
+                config.setExposedHeaders(Arrays.asList("Authorization"));
                 config.setMaxAge(3600L);
 
                 return config;
             }
         }))
                 .csrf(csrfConfig -> csrfConfig.csrfTokenRequestHandler(csrfTokenRequestAttributeHandler)
-                        .ignoringRequestMatchers("/contact","/register")
+                        .ignoringRequestMatchers("/contact","/register","/apiLogin")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                         .addFilterAfter(new CSRFCookieFilter(), BasicAuthenticationFilter.class);
 
@@ -63,13 +70,15 @@ public class ProjectSecurityConfig {
 //        http.requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()); // Al lows only HTTP
 
         http
+                .addFilterAfter(new JWTTokenGenerationFilter(), BasicAuthenticationFilter.class)
+                .addFilterBefore(new JWTTokenValidatorFilter(),BasicAuthenticationFilter.class)
                 .authorizeHttpRequests(requests ->  requests
                         .requestMatchers("/myAccount").hasAuthority("VIEWACCOUNT")
                         .requestMatchers("/myBalance").hasAnyAuthority("VIEWBALANCE","VIEWACCOUNT")
                         .requestMatchers("/myLoans").hasAuthority("VIEWLOANS")
                         .requestMatchers("/myCards").hasAuthority("VIEWCARDS")
                         .requestMatchers("/user").authenticated()
-                .requestMatchers("/notices","/contact","/error","/register","/invalidSession").permitAll());
+                .requestMatchers("/notices","/contact","/error","/register","/invalidSession","/apiLogin").permitAll());
 
 //        http.formLogin(flc -> flc.disable()); // The form will appear
 //        http.httpBasic(hbc -> hbc.disable()); // The alert box will appear
@@ -93,5 +102,13 @@ public class ProjectSecurityConfig {
     @Bean
     public CompromisedPasswordChecker compromisedPasswordChecker(){
         return new HaveIBeenPwnedRestApiPasswordChecker();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(EazyBankUserDetailsService userDetailsService,PasswordEncoder passwordEncoder){
+        EazyBankUsernamePwdAuthenticationProvider authenticationProvider = new EazyBankUsernamePwdAuthenticationProvider(userDetailsService,passwordEncoder);
+        ProviderManager providerManager = new ProviderManager(authenticationProvider);
+        providerManager.setEraseCredentialsAfterAuthentication(false);
+        return providerManager;
     }
 }

@@ -1,4 +1,4 @@
-[//]: # (--------------------- Section 1 ------------------------)
+## --------------------- Section 1 ------------------------
 1. Building Spring Project
 2. Implementing Normal Spring Security 
 3. Added customer user & password in application.properties
@@ -6,13 +6,13 @@
 5. Understood Operations team security and development phase security (Video 7)
 6. Spring Security Internal Flow With seeing all source codes
 
-[//]: # (----------------- Section 2 -----------------------)
+## ----------------- Section 2 -----------------------
 
 1. Created All Dummy Controllers
 2. Creating Custom Security FilterChain with RequestMatchers,permitAll,denyAll,authenticated
 3. Learnt About FormLogin and HttpBasic Login
 
-[//]: # (-------------------- Section 3 ---------------------)
+## -------------------- Section 3 ---------------------
 
 1. Understood InMemoryDatabase, used to store credentials directly in UserDetailsService
 2. Learnt About Password Encoders - Used Bcrypt password encoder
@@ -20,7 +20,7 @@
 4. Understood whole UserDetails which is Under AuthenticationProvider
 5. Different in Authentication Interface and UserDetails Interface
 
-[//]: # (--------------------- Section 4 ---------------------)
+## --------------------- Section 4 ---------------------
 
 1. Setup a MYSQL container for eazybank database on docker using command "docker run -p 3306:3306 --name springsecurity -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=eazybank -d mysql"
 2. Using SQL Electron for the connection to DB and checking the records and tables
@@ -29,7 +29,7 @@
 5. For Implementing Authentication using our own tables we create CustomUserDetailsService by implementing UserDetailsService & Removing JDBCUserDetailsManager
 6. created a Register Router which registers the customer & Disables CSRF as it does not allow Creating deleting Data in table
 
-[//]: # (----------------------- Section 5 -----------------------)
+## ----------------------- Section 5 -----------------------
 
 1. Understanding Password Encoding using Encoding, Encryption & Hashing
 2. Demo,Drawbacks & Advantages of these three
@@ -37,13 +37,13 @@
 4. Overcoming the above attacks by various methods
 5. Understanding PasswordEncoder.class & BCryptPasswordEncoder
 
-[//]: # (------------------- Section 6 ----------------)
+## ------------------- Section 6 ----------------
 
 1. Understanding Authentication Provider & how AuthenticationManager chooses AuthenticationProvider
 2. Created own Custom Authentication Provider which works on UsernamePasswordAuthenticationToken
 3. Understanding Business Standards for Environments and Profiles in Detail
 
-[//]: # (-------------------- Section 7 -------------------------)
+## -------------------- Section 7 -------------------------
 
 1. Accepting only HTTP or HTTPS request on the basis of prod or default profile
 2. Understanding Exception Handling for Access Denied and Forbidden Error
@@ -56,22 +56,28 @@
 9. Creating Custom FormLogin & Logout Configurations with thymeleaf
 10. Understanding SecurityContext & SecurityContextHolder
 
-[//]: # (------------------- Section 8 -------------------------)
+## ------------------- Section 8 -------------------------
 
 1. Establishing Frontend & Adding Implementation to Models & Routes with Database Queries
 2. Understood & Implemented CORS Policy
 3. Added CSRF Policy
 
-[//]: # (------------------ Section 9 --------------------)
+## ------------------ Section 9 --------------------
 
 1. Difference between Authentication & Authorization
 2. Implementing Authorization in SecurityConfig
 3. Difference between Authority & Roles
 4. Implementing Authorization Events
 
-[//]: # (-------------------- Section 10 -----------------------)
+## -------------------- Section 10 -----------------------
 
 1. Understanding Custom Filters & OncePerFilterRequest
 2. Adding AddFilterAfter,AddFilterBedore & AddFilterAt methods in project
 
-[//]: # (----------------- Section 11 ----------------------------)
+## ----------------- Section 11 ----------------------------
+
+1. Telling about JWT Tokens & Opaque Tokens
+2. Understood about SSO & Advantages of Tokens
+3. Understanding in Detail of JWTs
+4. Applying Dependencies & Implementing JWT. Making JWTValidationFilter & JWTGenerationFilter
+5. Making Specific /apiLogin for Logging in using JWT
