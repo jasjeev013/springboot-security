@@ -81,3 +81,31 @@
 3. Understanding in Detail of JWTs
 4. Applying Dependencies & Implementing JWT. Making JWTValidationFilter & JWTGenerationFilter
 5. Making Specific /apiLogin for Logging in using JWT
+
+## -----------------Section 12 ---------------------------
+
+1. Understanding of Method level Security
+2. PreAuthorize & PostAuthorize
+3. PreFilter & PostFilter
+
+## --------------------Section 13 -------------------------
+
+1. Understand the Workflow of OAUTH2 
+2. Different Grant types Flows
+3. Understanding OAUTH 2 FLow of Authorization Code Grant Type 
+4. Understanding OAUTH 2 Flow of Implicit Grant Flow ( Not Recommended as it's deprecated )
+5. Understanding OAUTH 2 Flow of Proof Key For Code Exchange (PKCE)
+6. Understanding OAUTH 2 Flow of Password Grant/ Resource Owner Credentials Grant type 
+7. Understanding OAUTH 2 Flow of Client Credentials Grant Type 
+8. Understanding OAUTH 2 Flow of Refresh Token Grant Type
+9. Open ID Connect
+
+## -------------------- Section 14 --------------------------
+
+1. Demo of OAUTH2 using Social logins GitHub, Facebook
+2. Creating New Project Adding New FilterChain which takes basic form login & OAUTH 2 Client also
+3. Making Client ID and Client Secret from GitHub & developers.facebook.com
+4. Making Bean of Specific Social Login
+5. Changing Bean Structure to the Application.properties Structure
+
+## -------------------- Section 15 --------------------

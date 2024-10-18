@@ -36,7 +36,7 @@ public class UserController {
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
-    private Environment env;
+    private final Environment env;
 
 
 
