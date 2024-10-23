@@ -109,3 +109,20 @@
 5. Changing Bean Structure to the Application.properties Structure
 
 ## -------------------- Section 15 --------------------
+(This section is just seen not implemented in this project)
+1. Created KeyCloak Container in Docker
+2. Made and Learn about the Clients in KeyCloak
+3. Deleting Some Beans like AuthenticationManager, Password Encoder, Filters, JWT & etc
+4. Making KeyClockRoleConverter.java & Setting up resource server
+5. Testing through Client credential Grant type flow & Using Opaque Tokens
+6. Testing through PKCE Authorization Grant Type Flow
+7. Configuring Multi-Factor Authentication using KeyCloak
+8. Social Login Integration
+
+## -------------------- Section 16 ----------------------
+
+1. Creating New Project with specific dependencies
+2. Established the Auth Server
+3. Connecting THe Resource Server with Auth Server
+4. Using different Grant Type FLows like PCKE, Client, Authorization, Refresh Token
+5. Finished
